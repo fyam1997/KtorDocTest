@@ -1,16 +1,39 @@
 package com.fyam
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import io.github.tabilzad.ktor.annotations.GenerateOpenApi
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.get
+import io.ktor.server.routing.route
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+@GenerateOpenApi
+fun Route.rootRoute() {
+    route("/root") {
+        routeExpression()
+        routeBlockBodyWithReturn()
+        routeNoReturnType()
+        routeExplicitUnit()
+    }
+}
+
+fun Route.routeExpression(): Route = route("/expressBody") {
+    get {}
+}
+
+fun Route.routeBlockBodyWithReturn(): Route {
+    return route("/blockBodyWithReturn") {
+        get {}
+    }
+}
+
+fun Route.routeNoReturnType() {
+    route("/noReturnType") {
+        get {}
+    }
+}
+
+@Suppress("RedundantUnitReturnType")
+fun Route.routeExplicitUnit(): Unit {
+    route("/explicitUnit") {
+        get {}
     }
 }
