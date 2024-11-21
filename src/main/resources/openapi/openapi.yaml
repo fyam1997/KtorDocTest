@@ -1,0 +1,13 @@
+---
+openapi: "3.1.0"
+info:
+  title: "Open API Specification"
+  description: "Generated using Ktor Docs Plugin"
+  version: "1.0.0"
+paths:
+  /root/noReturnType:
+    get: {}
+  /root/explicitUnit:
+    get: {}
+components:
+  schemas: {}
